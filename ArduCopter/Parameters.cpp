@@ -917,32 +917,37 @@ const AP_Param::GroupInfo ParametersG2::var_info[] = {
     // @DisplayName: Tuning maximum
     // @Description: Maximum value that the parameter currently being tuned with the transmitter's channel 6 knob will be set to
     // @User: Standard
-    AP_GROUPINFO("TUNE_MAX", 63, ParametersG2, tuning_max, 0),
+    AP_GROUPINFO("TUNE_MAX", 32, ParametersG2, tuning_max, 0),
 
     // @Param: TORN_RADIUS_MAX
     // @DisplayName: Tornado Max Radius
     // @Description: 
     // @User: Standard
-    AP_GROUPINFO("TORN_RADIUS_MAX", 62, ParametersG2, torn_radius_max, 10000.0f),
+    AP_GROUPINFO("TORN_RADIUS_MAX", 62, ParametersG2, torn_radius_max, 10000),
 
-    // @Param: TORN_RADIU
+    // @Param: TORN_RADIUS
     // @DisplayName: Tornado Start Radius
     // @Description: 
     // @User: Standard
-    AP_GROUPINFO("TORN_RADIUS", 61, ParametersG2, torn_radius_start, 100.0f),
+    AP_GROUPINFO("TORN_RADIUS", 61, ParametersG2, torn_radius_start, 100),
 
-    // @Param: TORN_RADIU
-    // @DisplayName: Tornado Start Radius
+    // @Param: TORN_RADIUS_GAIN
+    // @DisplayName: Tornado Radius Gain
     // @Description: 
     // @User: Standard
-    AP_GROUPINFO("TORN_RADIUS_GAIN", 60, ParametersG2, torn_radius_gain, 0.1f),
+    AP_GROUPINFO("TORN_RADIUS_GAIN", 60, ParametersG2, torn_radius_gain, 0.1),
 
     // @Param: TORN_RATE
     // @DisplayName: Torn Curve Rate
     // @Description: 
     // @User: Standard
-    AP_GROUPINFO("TORN_RATE", 59, ParametersG2, torn_curve_rate, 10.0f),
+    AP_GROUPINFO("TORN_RATE", 59, ParametersG2, torn_curve_rate, 10),
 
+    // @Param: TORN_CLIMB_GAIN
+    // @DisplayName: Tornado Start Radius
+    // @Description: 
+    // @User: Standard
+    AP_GROUPINFO("TORN_CLIMB_GAIN", 58, ParametersG2, torn_climb_gain, 300),
 
     AP_GROUPEND
 };

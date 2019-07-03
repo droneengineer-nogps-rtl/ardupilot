@@ -601,6 +601,7 @@ public:
     AP_Float torn_radius_start;
     AP_Float torn_radius_gain;
     AP_Float torn_curve_rate;
+    AP_Float torn_climb_gain;
     
 };
 

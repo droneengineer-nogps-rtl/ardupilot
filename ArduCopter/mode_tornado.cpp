@@ -71,7 +71,7 @@ void ModeTornado::run()
     // set motors to full range
     motors->set_desired_spool_state(AP_Motors::DesiredSpoolState::THROTTLE_UNLIMITED);
 
-    // run circle controller
+    // run controller
     update();
 
     // call attitude controller
@@ -90,7 +90,7 @@ void ModeTornado::run()
     if (motors->get_desired_spool_state() == AP_Motors::DesiredSpoolState::GROUND_IDLE && !copter.ap.land_complete) {
         pos_control->set_alt_target_from_climb_rate(-abs(g.land_speed), G_Dt, false);
     } else {
-        pos_control->set_alt_target_from_climb_rate(target_climb_rate, G_Dt, false);
+        pos_control->set_alt_target_from_climb_rate(target_climb_rate + (_gain_vector * g2.torn_climb_gain), G_Dt, false);
     }
     pos_control->update_z_controller();
 }
