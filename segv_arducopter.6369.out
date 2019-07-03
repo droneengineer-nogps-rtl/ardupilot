@@ -1,0 +1,91 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+0x00007fc09ab74687 in __GI___waitpid (pid=6372, stat_loc=stat_loc@entry=0x7fffc4f283a8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:30
+30	../sysdeps/unix/sysv/linux/waitpid.c: No such file or directory.
+#0  0x00007fc09ab74687 in __GI___waitpid (pid=6372, stat_loc=stat_loc@entry=0x7fffc4f283a8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:30
+        resultvar = 61
+        sc_ret = <optimized out>
+#1  0x00007fc09aadf067 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:149
+        __result = <optimized out>
+        _buffer = {__routine = 0x7fc09aadf360 <cancel_handler>, __arg = 0x7fffc4f283ac, __canceltype = 0, __prev = 0x0}
+        _avail = 1
+        status = -1679812058
+        save = <optimized out>
+        pid = 6372
+        sa = {__sigaction_handler = {sa_handler = 0x1, sa_sigaction = 0x1}, sa_mask = {__val = {65536, 0 <repeats 15 times>}}, sa_flags = 0, sa_restorer = 0x7fffc4f28aa0}
+        omask = {__val = {0 <repeats 16 times>}}
+        __cnt = <optimized out>
+        __set = <optimized out>
+#2  0x00007fc09bf46ed3 in AP_HAL::dump_stack_trace () at ../../libraries/AP_HAL_SITL/system.cpp:90
+        dumpstack = 0x7fc09c02c2d2 "Tools/scripts/dumpstack"
+        statbuf = {st_dev = 2, st_ino = 2814749767708521, st_nlink = 1, st_mode = 33279, st_uid = 1000, st_gid = 1000, __pad0 = 0, st_rdev = 0, st_size = 262, st_blksize = 512, st_blocks = 0, st_atim = {tv_sec = 1561710833, tv_nsec = 791901500}, st_mtim = {tv_sec = 1561710833, tv_nsec = 791901500}, st_ctim = {tv_sec = 1561710833, tv_nsec = 791901500}, __glibc_reserved = {0, 0, 0}}
+        paths = {0x7fc09c02c2d2 "Tools/scripts/dumpstack", 0x7fc09c02c2ea "APM/Tools/scripts/dumpstack"}
+        cmd = "sh Tools/scripts/dumpstack 6369 >segv_arducopter.6369.out 2>&1\000\000\230\206\362\304\377\177\000\000\000\070,z&\316O-", '\000' <repeats 16 times>, "P\243\342\233"
+        progname = "/home/ezawa/ardupilot/build/sitl/bin\000arducopter\000\320\206\362\304\377\177\000\000\000\070,z&\316O-0\216\362\304\377\177\000\000\000\000\000\000\000\000\000\000-#\000\000\000\000\000\000\300\354\302\232\300\177\000\000{\314\002\234"
+        p = 0x7fffc4f286b4 ""
+        n = 47
+        output_filepath = "segv_arducopter.6369.out\000\001\n\000\000"
+        fd = 0
+        buf = " \207\362\304\377\177\000\000,\026\371\233\300\177\000\000`\207\362\304\377\177\000\000\220\004*\234\177\025\000\000r\314\002\234\300\177\000\000\260\270*\234\300\177\000\000\200\207\362\304\377\177\000\000\217\026\371\233\300\177\000\000\366V\fC;\204\017B\200\004*\234\177\025\000\000r\314\002\234\300\177\000\000\260\270*\234\300\177\000\000\002\000\025\177\177\000\000\001\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\340\270*\234\300\177\000\000\260\207\362\304\377\177\000\000\336\313\363\233\300\177\000\000\035\221\362\304\377\177\000\000\200\216*\234\300\177\000\000\060\365\306\274\377\177\000\000\000\000\000\000\000\000\000\000p\214\362\304\377\177\000\000\344\201\364\233\300\177\000\000\350\035l\233\000\000\200?"...
+#3  0x00007fc09bf46d07 in AP_HAL::panic (errormsg=0x7fc09c0160ef "Bad var table") at ../../libraries/AP_HAL_SITL/system.cpp:38
+        ap = {{gp_offset = 8, fp_offset = 48, overflow_arg_area = 0x7fffc4f28c10, reg_save_area = 0x7fffc4f28b50}}
+#4  0x00007fc09be36a89 in Copter::load_parameters (this=0x7fc09c29d920 <copter>) at ../../ArduCopter/Parameters.cpp:1072
+        before = 32767
+#5  0x00007fc09be58ad0 in Copter::init_ardupilot (this=0x7fc09c29d920 <copter>) at ../../ArduCopter/system.cpp:37
+No locals.
+#6  0x00007fc09be2f374 in Copter::setup (this=0x7fc09c29d920 <copter>) at ../../ArduCopter/Copter.cpp:215
+No locals.
+#7  0x00007fc09bf3bafe in HAL_SITL::run (this=0x7fc09c2ac1a0 <AP_HAL::get_HAL()::hal>, argc=11, argv=0x7fffc4f28e38, callbacks=0x7fc09c29d920 <copter>) at ../../libraries/AP_HAL_SITL/HAL_SITL_Class.cpp:153
+        __PRETTY_FUNCTION__ = "virtual void HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const"
+        new_argv_offset = 11 '\v'
+        using_watchdog = false
+        last_watchdog_save = 8
+#8  0x00007fc09be30f77 in main (argc=11, argv=0x7fffc4f28e38) at ../../ArduCopter/Copter.cpp:615
+No locals.
+
+Thread 1 (Thread 0x7fc09bda0740 (LWP 6369)):
+#0  0x00007fc09ab74687 in __GI___waitpid (pid=6372, stat_loc=stat_loc@entry=0x7fffc4f283a8, options=options@entry=0) at ../sysdeps/unix/sysv/linux/waitpid.c:30
+        resultvar = 61
+        sc_ret = <optimized out>
+#1  0x00007fc09aadf067 in do_system (line=<optimized out>) at ../sysdeps/posix/system.c:149
+        __result = <optimized out>
+        _buffer = {__routine = 0x7fc09aadf360 <cancel_handler>, __arg = 0x7fffc4f283ac, __canceltype = 0, __prev = 0x0}
+        _avail = 1
+        status = -1679812058
+        save = <optimized out>
+        pid = 6372
+        sa = {__sigaction_handler = {sa_handler = 0x1, sa_sigaction = 0x1}, sa_mask = {__val = {65536, 0 <repeats 15 times>}}, sa_flags = 0, sa_restorer = 0x7fffc4f28aa0}
+        omask = {__val = {0 <repeats 16 times>}}
+        __cnt = <optimized out>
+        __set = <optimized out>
+#2  0x00007fc09bf46ed3 in AP_HAL::dump_stack_trace () at ../../libraries/AP_HAL_SITL/system.cpp:90
+        dumpstack = 0x7fc09c02c2d2 "Tools/scripts/dumpstack"
+        statbuf = {st_dev = 2, st_ino = 2814749767708521, st_nlink = 1, st_mode = 33279, st_uid = 1000, st_gid = 1000, __pad0 = 0, st_rdev = 0, st_size = 262, st_blksize = 512, st_blocks = 0, st_atim = {tv_sec = 1561710833, tv_nsec = 791901500}, st_mtim = {tv_sec = 1561710833, tv_nsec = 791901500}, st_ctim = {tv_sec = 1561710833, tv_nsec = 791901500}, __glibc_reserved = {0, 0, 0}}
+        paths = {0x7fc09c02c2d2 "Tools/scripts/dumpstack", 0x7fc09c02c2ea "APM/Tools/scripts/dumpstack"}
+        cmd = "sh Tools/scripts/dumpstack 6369 >segv_arducopter.6369.out 2>&1\000\000\230\206\362\304\377\177\000\000\000\070,z&\316O-", '\000' <repeats 16 times>, "P\243\342\233"
+        progname = "/home/ezawa/ardupilot/build/sitl/bin\000arducopter\000\320\206\362\304\377\177\000\000\000\070,z&\316O-0\216\362\304\377\177\000\000\000\000\000\000\000\000\000\000-#\000\000\000\000\000\000\300\354\302\232\300\177\000\000{\314\002\234"
+        p = 0x7fffc4f286b4 ""
+        n = 47
+        output_filepath = "segv_arducopter.6369.out\000\001\n\000\000"
+        fd = 0
+        buf = " \207\362\304\377\177\000\000,\026\371\233\300\177\000\000`\207\362\304\377\177\000\000\220\004*\234\177\025\000\000r\314\002\234\300\177\000\000\260\270*\234\300\177\000\000\200\207\362\304\377\177\000\000\217\026\371\233\300\177\000\000\366V\fC;\204\017B\200\004*\234\177\025\000\000r\314\002\234\300\177\000\000\260\270*\234\300\177\000\000\002\000\025\177\177\000\000\001\000\000\000\000\000\000\000\000\001\000\000\000\000\000\000\000\340\270*\234\300\177\000\000\260\207\362\304\377\177\000\000\336\313\363\233\300\177\000\000\035\221\362\304\377\177\000\000\200\216*\234\300\177\000\000\060\365\306\274\377\177\000\000\000\000\000\000\000\000\000\000p\214\362\304\377\177\000\000\344\201\364\233\300\177\000\000\350\035l\233\000\000\200?"...
+#3  0x00007fc09bf46d07 in AP_HAL::panic (errormsg=0x7fc09c0160ef "Bad var table") at ../../libraries/AP_HAL_SITL/system.cpp:38
+        ap = {{gp_offset = 8, fp_offset = 48, overflow_arg_area = 0x7fffc4f28c10, reg_save_area = 0x7fffc4f28b50}}
+#4  0x00007fc09be36a89 in Copter::load_parameters (this=0x7fc09c29d920 <copter>) at ../../ArduCopter/Parameters.cpp:1072
+        before = 32767
+#5  0x00007fc09be58ad0 in Copter::init_ardupilot (this=0x7fc09c29d920 <copter>) at ../../ArduCopter/system.cpp:37
+No locals.
+#6  0x00007fc09be2f374 in Copter::setup (this=0x7fc09c29d920 <copter>) at ../../ArduCopter/Copter.cpp:215
+No locals.
+#7  0x00007fc09bf3bafe in HAL_SITL::run (this=0x7fc09c2ac1a0 <AP_HAL::get_HAL()::hal>, argc=11, argv=0x7fffc4f28e38, callbacks=0x7fc09c29d920 <copter>) at ../../libraries/AP_HAL_SITL/HAL_SITL_Class.cpp:153
+        __PRETTY_FUNCTION__ = "virtual void HAL_SITL::run(int, char* const*, AP_HAL::HAL::Callbacks*) const"
+        new_argv_offset = 11 '\v'
+        using_watchdog = false
+        last_watchdog_save = 8
+#8  0x00007fc09be30f77 in main (argc=11, argv=0x7fffc4f28e38) at ../../ArduCopter/Copter.cpp:615
+No locals.
+A debugging session is active.
+
+	Inferior 1 [process 6369] will be detached.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]
