@@ -1284,3 +1284,87 @@ private:
 
     uint32_t reach_wp_time_ms = 0;  // time since vehicle reached destination (or zero if not yet reached)
 };
+
+class ModeRTLNoGPS : public ModeRTL {
+
+public:
+    // inherit constructor
+    using ModeRTL::Mode;
+
+    bool init(bool ignore_checks) override;
+    void run() override;
+
+    bool requires_GPS() const override { return false; }
+    bool has_manual_throttle() const override { return false; }
+    bool allows_arming(bool from_gcs) const override { return true; };
+    bool is_autopilot() const override { return true; }
+
+protected:
+
+    const char *name() const override { return "RTL_NOGPS"; }
+    const char *name4() const override { return "RNGP"; }
+    
+    const double earth_radius = 6378.137e3;
+
+    int32_t last_loc_alt;
+    int32_t last_loc_lat;
+    int32_t last_loc_lng;
+
+    int32_t home_loc_alt;
+    int32_t home_loc_lat;
+    int32_t home_loc_lng;
+
+    double home_distance;
+    double home_az;
+
+private:
+    bool set_loc();
+    bool calculate_home_distance();
+    void init_target();
+    
+    bool _state_gps;
+};
+
+
+
+class ModeTornado : public Mode {
+
+public:
+    // inherit constructor
+    using Mode::Mode;
+
+    bool init(bool ignore_checks) override;
+    void run() override;
+
+    bool requires_GPS() const override { return true; }
+    bool has_manual_throttle() const override { return false; }
+    bool allows_arming(bool from_gcs) const override { return false; };
+    bool is_autopilot() const override { return true; }
+
+protected:
+
+    const char *name() const override { return "TORNADO"; }
+    const char *name4() const override { return "TORN"; }
+
+    uint32_t wp_distance() const override;
+    int32_t wp_bearing() const override;
+
+private:
+    // internal variables
+    Vector3f    _center;        // center of circle in cm from home
+    float       _yaw;           // yaw heading (normally towards circle center)
+    float       _angle;         // current angular position around circle in radians (0=directly north of the center of the circle)
+    float       _angle_total;   // total angle traveled in radians
+    float       _angular_vel;   // angular velocity in radians/sec
+    float       _angular_vel_max;   // maximum velocity in radians/sec
+    float       _angular_accel; // angular acceleration in radians/sec/sec
+    float       _radius;
+    int         _gain_vector;
+
+
+    // Circle
+    bool pilot_yaw_override = false; // true if pilot is overriding yaw
+    void calc_velocities(bool init_velocity);
+    void update();
+    void init_start_angle(bool use_heading);
+};

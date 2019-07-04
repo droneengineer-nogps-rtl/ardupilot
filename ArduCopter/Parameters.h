@@ -596,6 +596,13 @@ public:
 
     AP_Float tuning_min;
     AP_Float tuning_max;
+
+    AP_Float torn_radius_max;
+    AP_Float torn_radius_start;
+    AP_Float torn_radius_gain;
+    AP_Float torn_curve_rate;
+    AP_Float torn_climb_gain;
+    
 };
 
 extern const AP_Param::Info        var_info[];

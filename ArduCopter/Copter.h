@@ -233,6 +233,8 @@ public:
     friend class ModeStabilize_Heli;
     friend class ModeThrow;
     friend class ModeZigZag;
+    friend class ModeRTLNoGPS;
+    friend class ModeTornado;
 
     Copter(void);
 
@@ -943,6 +945,8 @@ private:
 #if MODE_ZIGZAG_ENABLED == ENABLED
     ModeZigZag mode_zigzag;
 #endif
+    ModeRTLNoGPS mode_rtl_nogps;
+    ModeTornado mode_tornado;
 
     // mode.cpp
     Mode *mode_from_mode_num(const uint8_t mode);
