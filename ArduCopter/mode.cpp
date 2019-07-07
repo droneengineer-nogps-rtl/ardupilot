@@ -158,13 +158,6 @@ Mode *Copter::mode_from_mode_num(const uint8_t mode)
             ret = &mode_zigzag;
             break;
 #endif
-        case RTL_NOGPS:
-            ret = &mode_rtl_nogps;
-            break;
-
-        case TORNADO:
-            ret = &mode_tornado;
-            break;
 
         default:
             break;
